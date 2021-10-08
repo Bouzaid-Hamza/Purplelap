@@ -1,0 +1,27 @@
+/* =====================================
+      Footer :
+      ========================================*/
+
+footer {
+    height: 15rem;
+    background: $nav;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-icons {
+    width: 9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer i {
+    font-size: 2.5rem;
+}
+
+footer hr {
+    width: 10rem;
+}

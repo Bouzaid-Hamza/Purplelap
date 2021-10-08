@@ -1,0 +1,55 @@
+/* =================
+      Buttons Design :
+      ==================== */
+
+.first-btn {
+    background-color: $second;
+    border: none;
+    color: white;
+    padding: 0.9em 1.4em;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.35rem;
+    letter-spacing: 1px;
+}
+
+.first-btn:hover {
+    background-color: $third;
+}
+
+button[disabled] {
+    background-color: $third;
+    pointer-events: none;
+}
+
+@mixin login-btn {
+    background-color: white;
+    border-radius: 0.25rem;
+    color: $color6;
+    box-shadow: 0px 0px 10px rgb(85, 0, 141, 0.5);
+}
+
+@mixin signup-btn {
+    background-color: $main;
+    color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0px 0px 10px rgb(85, 0, 141, 0.5);
+
+}
+
+.login-btn {
+    @include login-btn;
+}
+
+.signup-btn {
+    @include signup-btn;
+}
+
+.login-btn:hover {
+    @include signup-btn;
+}
+
+.signup-btn:hover {
+    @include login-btn;
+}

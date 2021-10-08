@@ -1,0 +1,51 @@
+/* =====================================
+      Features section :
+      ========================================*/
+
+.features-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+}
+
+.features-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    justify-content: center;
+}
+
+.feature-item {
+    background-color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2.5rem;
+    width: max(calc(95vw / 4), 30rem);
+}
+
+.features-section i {
+    font-size: 2.5rem;
+    color: $color3;
+    background-color: rgb(238, 238, 238);
+    padding: 1rem;
+    animation: flip 2s ease-in-out 1s infinite alternate;
+}
+
+.feature-name {
+    color: $color2;
+    margin-top: 1.5rem;
+}
+
+.feature-description {
+    text-align: center;
+    color: $color2;
+    margin-top: 1.5rem;
+    max-width: 40rem;
+}

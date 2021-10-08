@@ -1,0 +1,81 @@
+/* =====================================
+      Best Sellers section :
+      ========================================*/
+
+.title {
+    color: $color3;
+    margin: 10rem auto;
+    padding: 1em;
+    max-width: 20em;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 4px;
+    border-bottom: 2px solid $color2;
+}
+
+.wrapper {
+    background-color: $wrapper;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.best-sellers-content {
+    overflow: hidden;
+    background-color: $wrapper;
+
+    .swiper-container {
+        padding: 5.5rem !important;
+        overflow: visible !important;
+    }
+
+    @media only screen and (max-width: 1340px) and (min-width: 1000px) {
+        width: 1180px;
+    }
+
+    @media only screen and (max-width: 1000px) and (min-width: 720px) {
+        width: 780px;
+    }
+
+    @media only screen and (max-width: 720px) and (min-width: 370px) {
+        width: 400px;
+    }
+
+    @media only screen and (max-width: 370px) {
+        .swiper-container {
+            padding: 5.5rem 3rem !important;
+        }
+
+        [class^=swiper-button-] {
+            transform: scale(0.7);
+            margin-right: -1.2rem;
+            margin-left: -1.2rem;
+        }
+    }
+}
+
+.best-seller::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid $second;
+    position: absolute;
+    right: -15px;
+    top: 30px;
+}
+
+.best-seller::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 11px;
+    padding: 9px;
+    text-align: center;
+    color: white;
+    right: -15px;
+    background: $special;
+    border-bottom-left-radius: 15px;
+    z-index: 1;
+}
+
+

@@ -1,0 +1,32 @@
+/* =====================================
+      Latest products section :
+      ========================================*/
+
+.latest-laptop {
+    width: 35rem;
+}
+
+.latest-products-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    color: $color2;
+}
+
+.latest-products-container {
+    background-color: $wrapper;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5rem 0;
+}
+
+.latest-products-container * {
+    font-size: 1.3rem;
+}
+
+.latest-products-section .product {
+    margin: 1.5rem;
+    max-width: 30rem;
+}

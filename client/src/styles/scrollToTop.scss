@@ -1,0 +1,29 @@
+/* =====================================
+      Scroll to top :
+      ========================================*/
+
+.scroll-to-top {
+    border: none;
+    border-radius: 50%;
+    background-color: $main;
+    color: white;
+    width: 2.5em;
+    height: 2.5em;
+    position: fixed;
+    right: 3%;
+    top: 80%;
+    animation: zoomInOut 1s linear infinite alternate;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 2;
+}
+
+.show-stt {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.hide-stt {
+    pointer-events: none;
+    opacity: 0;
+}

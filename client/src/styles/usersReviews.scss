@@ -1,0 +1,83 @@
+/* =====================================
+      User reviews section :
+      ========================================*/
+
+.users-reviews-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.users-reviews-content {
+    min-height: 65rem;
+    background: $special,
+    url("../imgs/back1.jpeg");
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 3rem;
+}
+
+.users-reviews-content > p {
+    max-width: 600px;
+    text-align: center;
+}
+
+.users-reviews {
+    position: relative;
+    width: 95%;
+    padding: 5rem 0;
+
+    .swiper-container {
+        overflow: visible !important;
+    }
+
+    .swiper-pagination {
+        top: 22rem;
+    }
+}
+
+.user-review {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    //width: 33%;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.288);
+
+    @media only screen and (max-width: 370px) {
+        flex-wrap: wrap;
+    }
+}
+
+.user-review::before {
+    content: open-quote open-quote;
+    position: absolute;
+    top: 0.25rem;
+    left: 1rem;
+    font-size: 6rem;
+    font-family: Arial, sans-serif;
+}
+
+.user-img img {
+    max-height: 8rem;
+    border-radius: 50%;
+}
+
+.user-review div:last-child {
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 2rem;
+    max-width: 35rem;
+}
+
+.user-name {
+    color: adjust-color($main, $lightness: 10%);
+}

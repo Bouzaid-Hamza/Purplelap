@@ -1,0 +1,9 @@
+/.idea
+*/node_modules
+*/todo.txt
+*/.env
+/server/https
+/server/purplelap_data
+/server/ENV-VARS.ps1
+/server/fillDatabase.js
+/server/readJson.js

@@ -1,0 +1,95 @@
+.shop-icon {
+    padding-left: 60px;
+    display: flex;
+    height: 6rem;
+    align-items: center;
+}
+
+.shop-icon i {
+    font-size: 2rem;
+}
+
+.fa-shopping-bag::after {
+    align-items: center;
+    background-color: adjust-color($main, $alpha: -0.6);
+    border-radius: 15%;
+    color: white;
+    content: attr(data-label);
+    display: inline-flex;
+    font-size: 1.3rem;
+    justify-content: center;
+    font-weight: 100;
+    transform: translate(-10%, -50%);
+    transition: transform 0.2s ease-in;
+    padding: 0.3rem 0.5rem;
+}
+
+.shop-icon:hover .fa-shopping-bag::after {
+    transform: translate(-10%, -70%);
+}
+
+.mini-cart {
+    width: 28rem;
+    box-shadow: -4px 4px 15px 0 rgb(0 0 0 / 15%);
+    background-color: white;
+    position: absolute;
+    top: 85%;
+    right: 4rem;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+    pointer-events: none;
+    @media only screen and (max-width: 280px) {
+        right: 1rem;
+    }
+}
+
+.mini-products {
+    max-height: 60rem;
+    overflow-y: auto;
+}
+
+.shop-icon:hover + .mini-cart, .mini-cart:hover {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mini-product {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+}
+
+.mini-img img {
+    display: block;
+    width: 9rem;
+}
+
+.mini-infos {
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mini-infos > * {
+    font-size: 1.3rem;
+}
+
+.mini-laptop-count {
+    background-color: rgba(102, 104, 209, 0.74);
+    color: white;
+    padding: 4px;
+    align-self: end;
+    border-radius: 5%;
+}
+
+.go-to-cart h4 {
+    padding: 10px;
+}
+
+.go-to-cart button {
+    width: 100%;
+}

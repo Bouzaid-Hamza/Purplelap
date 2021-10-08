@@ -1,0 +1,52 @@
+/* ==================
+      Global modifications:
+      ===================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-size: 1.4rem;
+    outline: none;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 4.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+html {
+    font-size: max(calc(0.0054 * 100vw), 9px);
+    font-family: "Roboto", sans-serif;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100%;
+}

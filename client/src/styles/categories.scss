@@ -1,0 +1,66 @@
+/* =====================================
+      Category section :
+      ========================================*/
+
+.category-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //overflow: hidden;
+}
+
+.category-wrapper {
+    background-color: $wrapper;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.category-content {
+    max-width: 110rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 1.5rem;
+    justify-content: space-evenly;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: white;
+    max-width: 40rem;
+    margin: 5rem 0;
+    height: 30em;
+    box-shadow: 0 0 6px rgb(201, 200, 200);
+}
+
+.category-img {
+    padding: 0 3rem;
+
+    img {
+        max-width: 100%;
+        min-height: 15rem;
+        display: block;
+    }
+}
+
+.category-name {
+    padding: 1.5rem;
+    width: 50%;
+    border-bottom-right-radius: 5rem;
+    background: $special;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+
+.category-item .first-btn {
+    background-color: $third;
+    align-self: stretch;
+}
+
+.category-item .first-btn:hover {
+    background-color: $color1;
+}
