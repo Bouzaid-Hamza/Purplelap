@@ -17,9 +17,6 @@ function MiniCart ({ cart }) {
                 </div>
                 <div className="go-to-cart">
                     {cart.length ? <h4>Total: {total} $</h4> : <h4>Your cart is empty.</h4>}
-                    {/* <button disabled={!cart.length} className="first-btn"> */}
-                    {/*    GO TO CART */}
-                    {/* </button> */}
                     <Link disabled={!cart.length}
                         className="first-btn"
                         to="/cart">

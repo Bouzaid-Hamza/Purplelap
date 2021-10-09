@@ -8,10 +8,12 @@ import Home from './Home';
 import 'aos/dist/aos.css';
 import 'swiper/swiper-bundle.min.css';
 import '../styles/App.scss';
+import NavBar from '../components/NavBar';
 
 const App = () => (
     <Router>
         <AuthProvider>
+            {/* <NavBar /> */}
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route path='/signup' component={SignUp}/>

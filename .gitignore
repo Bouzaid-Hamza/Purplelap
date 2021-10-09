@@ -4,6 +4,7 @@
 */.env
 /server/https
 /server/purplelap_data
+/server/tests/
 /server/ENV-VARS.ps1
 /server/fillDatabase.js
 /server/readJson.js

@@ -1,9 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const cartUrl = `${process.env.REACT_APP_API_URL}/cart`;
 
+// const updateCount = async (laptopId, count) => {
+//     const res = await fetch(cartUrl, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
+//         },
+//         body: JSON.stringify({ laptopId, count })
+//     });
+//
+//     return await res.json();
+// }
+//
+// const countReducer = (state, action) => {
+//     switch (action.type) {
+//     case 'MINUS':
+//         if (state < 2) return state;
+//         updateCount(action.laptopId, state - 1)
+//             .then(r => console.log(r));
+//         return state - 1;
+//     case 'PLUS':
+//         updateCount(action.laptopId, state + 1)
+//             .then(r => console.log(r));
+//         return state + 1;
+//     default:
+//         return state;
+//     }
+// }
+
 function CartItem ({ specs }) {
+    // const [count, dispatch] = useReducer(countReducer, specs.count);
+    // const handleMinus = () => {
+    //     dispatch({ type: 'MINUS', laptopId: specs._id });
+    // }
+    // const handlePlus = () => {
+    //     dispatch({ type: 'PLUS', laptopId: specs._id });
+    // }
+
     const [count, setCount] = useState(specs.count);
 
     const updateCount = async (laptopId, count) => {
