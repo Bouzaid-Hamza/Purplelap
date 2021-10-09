@@ -11,9 +11,8 @@ router.get('/', auth, async (req, res) => {
     const laptops = [];
     for (const item of user.cart) {
         const Model = categoryMap[item.category];
-        const { _id, img, name, processor, price } = await Model.findById(item.laptopId);
-        const laptop = { _id, img, name, processor, price, count: item.count };
-        laptops.push(laptop);
+        const laptop = await Model.findById(item.laptopId);
+        laptops.push({ ...laptop._doc, count: item.count });
     }
 
     res.send(laptops);
@@ -28,19 +27,31 @@ router.post('/', auth, validate(validateMiniLaptop), async (req, res) => {
     const doesExist = await Model.findById(req.body.laptopId);
     if (!doesExist) return res.status(400).send({ message: 'Invalid laptop or category.' });
 
-    const laptop = { laptopId, category };
-
     const doesExistInCart = user.cart.find(item => {
         return item.laptopId.toString() === laptopId.toString() && item.category === category;
     });
 
     // user.addToCart();
     if (doesExistInCart) doesExistInCart.count++;
-    else user.addToCart(laptop);
+    else user.addToCart({ laptopId, category });
 
     await user.save();
 
     res.send({ message: 'Laptop has been added to to your cart successfully' });
+});
+
+router.put('/', auth, async (req, res) => {
+    const { _id } = req.user;
+    const { laptopId, count } = req.body;
+    const user = await User.findById(_id);
+
+    const laptopIndex = user.cart.findIndex(item => item.laptopId.toString() === laptopId);
+    if (laptopIndex === -1) return res.status(400).send({ message: 'Invalid laptop.' });
+
+    user.cart[laptopIndex].count = count;
+    user.save();
+
+    res.send({ message: 'Cart has been updated successfully' });
 });
 
 module.exports = router;

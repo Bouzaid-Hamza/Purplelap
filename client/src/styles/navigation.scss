@@ -35,7 +35,7 @@
         transition: color 0.15s ease-in;
     }
 
-    a:hover, .nav-links > li .active {
+    a:not(.go-to-cart a):hover, .nav-links > li .active {
         color: $main;
     }
 }

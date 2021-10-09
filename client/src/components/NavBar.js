@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import NavLink from './NavLink';
 import DropDown from './DropDown';
 import MiniCart from './MiniCart';
@@ -24,10 +24,13 @@ function NavBar ({ cart }) {
     //     }
     // }
 
-    useEffect(async () => {
-        handleScroll();
+    useEffect(() => {
         let mounted = true;
-        if (mounted) window.addEventListener('scroll', handleScroll);
+        if (mounted) {
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+        }
+
         return () => {
             mounted = false;
             window.removeEventListener('scroll', handleScroll);

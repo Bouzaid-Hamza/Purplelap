@@ -86,10 +86,13 @@
     border-radius: 5%;
 }
 
-.go-to-cart h4 {
-    padding: 10px;
-}
+.go-to-cart {
+    h4 {
+        padding: 10px;
+    }
 
-.go-to-cart button {
-    width: 100%;
+    a {
+        display: block;
+        text-align: center;
+    }
 }
