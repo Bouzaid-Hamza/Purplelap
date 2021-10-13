@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const cartUrl = `${process.env.REACT_APP_API_URL}/cart`;
-
 // const updateCount = async (laptopId, count) => {
 //     const res = await fetch(cartUrl, {
 //         method: 'PUT',
@@ -40,16 +38,15 @@ function CartItem ({ specs }) {
     // const handlePlus = () => {
     //     dispatch({ type: 'PLUS', laptopId: specs._id });
     // }
-
     const [count, setCount] = useState(specs.count);
 
     const updateCount = async (laptopId, count) => {
-        const res = await fetch(cartUrl, {
+        const res = await fetch('/api/cart', {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
+                'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({ laptopId, count })
         });
 

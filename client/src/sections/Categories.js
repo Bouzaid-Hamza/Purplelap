@@ -6,13 +6,7 @@ function Categories () {
     const [categories, setCategories] = useState([]);
 
     useEffect(async () => {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/categories`, {
-            method: 'GET',
-            headers: {
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            }
-        });
-
+        const res = await fetch('/api/categories');
         setCategories(await res.json());
     }, []);
 

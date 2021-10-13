@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NavLink = ({ url, name }) => <li><a href={url}>{name}</a></li>;
+const NavLink = (props) => (
+    <li {...props}>
+        <a href={props.url}>{props.icon}{props.name}</a>
+        {props.children}
+    </li>
+);
 
 NavLink.propTypes = {
     url: PropTypes.string,
-    name: PropTypes.string
+    name: PropTypes.string,
+    icon: PropTypes.node,
+    children: PropTypes.any
 };
 
 export default NavLink;

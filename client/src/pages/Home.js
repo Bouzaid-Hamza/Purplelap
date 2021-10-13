@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import AOS from 'aos';
 import NavBar from '../components/NavBar';
 import GetStarted from '../sections/GetStarted';
@@ -11,22 +11,20 @@ import BestReviews from '../sections/BestReviews';
 import ContactUs from '../components/ContactUs';
 import Footer from '../components/Footer';
 
-const cartUrl = `${process.env.REACT_APP_API_URL}/cart`;
-
 function Home () {
     const [cart, setCart] = useState([]);
 
     const inCart = (laptopId) => cart.map(item => item._id).includes(laptopId);
 
     const refreshCart = useCallback(async () => {
-        const res = await fetch(cartUrl, {
+        const res = await fetch('/api/cart', {
             method: 'GET',
-            headers: {
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            }
+            credentials: 'include'
         });
 
-        setCart(await res.json());
+        const result = await res.json();
+        console.log(result);
+        setCart(result);
     }, []);
 
     useEffect(async () => {
@@ -34,20 +32,22 @@ function Home () {
         AOS.init();
     }, []);
 
-    return <>
-        <NavBar cart={cart} />
-        <main>
-            <GetStarted />
-            <BestSellers cartFn={{ inCart, refreshCart }} />
-            <Categories />
-            <LatestLaptops cartFn={{ inCart, refreshCart }} />
-            <Features />
-            <BestReviews />
-            <ContactUs />
-            <ScrollToTop />
-        </main>
-        <Footer />
-    </>;
+    return (
+        <Fragment>
+            <NavBar cart={cart} />
+            <main>
+                <GetStarted />
+                <BestSellers cartFn={{ inCart, refreshCart }} />
+                <Categories />
+                <LatestLaptops cartFn={{ inCart, refreshCart }} />
+                <Features />
+                <BestReviews />
+                <ContactUs />
+                <ScrollToTop />
+            </main>
+            <Footer />
+        </Fragment>
+    );
 }
 
 export default Home;

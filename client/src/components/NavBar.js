@@ -1,28 +1,20 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import NavLink from './NavLink';
 import DropDown from './DropDown';
 import MiniCart from './MiniCart';
-import PropTypes from 'prop-types';
+import ProfileIcon from './ProfileIcon';
+import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
-function NavBar ({ cart }) {
+function NavBar ({ cart, noFix }) {
     const [fix, setFix] = useState('nav-border-bottom');
+    const { authenticated } = useAuth();
+    console.log('NavBar');
 
     const handleScroll = () => {
         setFix(window.scrollY > 110 ? 'nav-bar-color-change' : 'nav-border-bottom');
     }
-
-    // const handleClick = (e) => {
-    //     if (e.target.tagName.toLowerCase() === 'a') {
-    //         const links = Array.from(e.target.closest('.nav-links').children);
-    //         links.forEach(link => {
-    //             if (e.target === link.firstChild) {
-    //                 link.firstChild.classList.add('active');
-    //             } else {
-    //                 link.firstChild.classList.remove('active');
-    //             }
-    //         });
-    //     }
-    // }
 
     useEffect(() => {
         let mounted = true;
@@ -38,23 +30,29 @@ function NavBar ({ cart }) {
     }, []);
 
     return (
-        <nav className={`nav-bar ${fix}`}>
-            <div className="logo"><i className="fas fa-laptop"/> PurpleLap</div>
+        <nav className={`nav-bar ${noFix ? 'nav-bar-color-change' : fix}`}>
+            <Link to='/'>
+                <div className="logo">
+                    <i className="fas fa-laptop"/> PurpleLap
+                </div>
+            </Link>
             <div className="nav-content">
                 <input type="checkbox" id="toggle-side-bar"/>
-                {/* <ul className="nav-links" onClick={handleClick}> */}
                 <ul className="nav-links">
-                    <NavLink key='1' url='#home' name='HOME' />
-                    <NavLink key='2' url='#about' name='ABOUT' />
-                    <DropDown key='3' url='#category' name='CATEGORY' links={[
-                        { url: '#ultraPortable', name: 'Ultraportable' },
-                        { url: '#business', name: 'Business' },
-                        { url: '#gaming', name: 'Gaming' },
-                        { url: '#id-3D-Modeling', name: '3D-Modeling' }
-                    ]} />
-                    <NavLink key='4' url='#contact' name='CONTACT' />
+                    <NavLink url='/#home' name='HOME' icon={<i className="fas fa-home"/>} />
+                    <NavLink url='/#about' name='ABOUT' icon={<i className="fas fa-question"/>} />
+                    <NavLink className='drop-menu' url='/#category' name='CATEGORY'>
+                        <DropDown>
+                            <NavLink url='/#ultraPortable' name='Ultra Portable' icon={<i className="fas fa-tablet"/>} />
+                            <NavLink url='/#business' name='Business' icon={<i className="fas fa-briefcase"/>} />
+                            <NavLink url='/#gaming' name='Gaming' icon={<i className="fas fa-gamepad"/>} />
+                            <NavLink url='/#id-3D-Modeling' name='3D-Modeling' icon={<i className="fab fa-unity"/>} />
+                        </DropDown>
+                    </NavLink>
+                    <NavLink url='/#contact' name='CONTACT' icon={<i className="fas fa-phone-alt"/>} />
                 </ul>
-                <MiniCart cart={cart} />
+                {cart ? <MiniCart cart={cart} /> : ''}
+                {authenticated ? <ProfileIcon /> : ''}
                 <label htmlFor="toggle-side-bar" className="open-side-bar">
                     <i className="fas fa-bars"/>
                 </label>
@@ -67,7 +65,8 @@ function NavBar ({ cart }) {
 }
 
 NavBar.propTypes = {
-    cart: PropTypes.array
+    cart: PropTypes.array,
+    noFix: PropTypes.bool
 }
 
-export default NavBar;
+export default React.memo(NavBar);

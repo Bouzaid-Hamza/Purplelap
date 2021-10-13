@@ -20,8 +20,8 @@ const validateAuth = async (option, form) => {
     else throw new Error('option must be "signup" or "login"');
 
     try {
-        const result = await schema.validate(form, { abortEarly: false });
-        if (result) return true;
+        await schema.validate(form, { abortEarly: false });
+        return {};
     } catch (e) {
         return { errors: e.inner };
     }

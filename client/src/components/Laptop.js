@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
-const cartUrl = `${process.env.REACT_APP_API_URL}/cart`;
+import { useAuth } from '../contexts/AuthContext';
 
 function Laptop (props) {
+    console.log('Laptop : ', props.specs.name);
     const { specs, type, dataLabel, inCart, refreshCart } = props;
+    const [buttonText, setButtonText] = useState('ADD TO CART');
+    const { authenticated } = useAuth();
 
     const addToCart = async (laptopId, category) => {
-        const res = await fetch(cartUrl, {
+        if (!authenticated) {
+            return console.log('you need login first');
+        }
+
+        const prevText = buttonText;
+        setButtonText(<i className="fas fa-sync-alt"/>);
+
+        const res = await fetch('/api/cart', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            },
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({ laptopId, category })
         });
 
+        setButtonText(prevText);
         console.log(await res.json());
     };
 
@@ -23,6 +31,10 @@ function Laptop (props) {
         await addToCart(specs._id, specs.category);
         await refreshCart();
     }
+
+    useEffect(() => {
+        if (inCart) setButtonText('INSIDE THE CART');
+    }, [inCart]);
 
     return (
         <div id={specs._id}
@@ -50,7 +62,7 @@ function Laptop (props) {
             <button className="first-btn"
                 disabled={inCart}
                 onClick={handleClick}>
-                {inCart ? 'INSIDE THE CART' : 'ADD TO CART'}
+                {buttonText}
             </button>
         </div>
     );

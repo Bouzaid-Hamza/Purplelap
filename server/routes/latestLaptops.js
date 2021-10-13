@@ -8,7 +8,7 @@ const findLaptopsByIds = require('../utils/findLaptopsByIds');
 
 const router = express.Router();
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     const latestIds = Array.from(await LatestLaptop.find());
     const latests = await findLaptopsByIds(latestIds);
 

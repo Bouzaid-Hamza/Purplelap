@@ -8,13 +8,7 @@ function LatestLaptops ({ cartFn }) {
     const { inCart, refreshCart } = cartFn;
 
     useEffect(async () => {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/latestLaptops`, {
-            method: 'GET',
-            headers: {
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            }
-        });
-
+        const res = await fetch('/api/latestLaptops');
         setLatestLaptops(await res.json());
     }, []);
 

@@ -12,13 +12,7 @@ function BestReviews () {
     const swiper = useRef();
 
     useEffect(async () => {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/bestReviews`, {
-            method: 'GET',
-            headers: {
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            }
-        });
-
+        const res = await fetch('/api/bestReviews');
         setBestReviews(await res.json());
     }, []);
 

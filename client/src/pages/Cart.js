@@ -1,17 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import CartItem from '../components/CartItem';
+import NavBar from '../components/NavBar';
 
-const cartUrl = `${process.env.REACT_APP_API_URL}/cart`;
-
-function Cart () {
+export default function Cart () {
     const [items, setItems] = useState([]);
 
     useEffect(async () => {
-        const res = await fetch(cartUrl, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/cart`, {
             method: 'GET',
-            headers: {
-                'X-Auth-Token': process.env.REACT_APP_X_AUTH_TOKEN
-            }
+            credentials: 'include'
         });
 
         setItems(await res.json());
@@ -19,6 +16,7 @@ function Cart () {
 
     return (
         <Fragment>
+            <NavBar noFix={true} />
             <h2 className="cart-title">Shopping Cart</h2>
             <div className="cart">
                 <div className="head">
@@ -27,12 +25,12 @@ function Cart () {
                     <h4 className="cart-price">Price</h4>
                     <h4 className="cart-total">Total</h4>
                 </div>
-                {items.map((item, index) => (
-                    <CartItem key={index} specs={item} />
-                ))}
+                {items.length
+                    ? items.map((item, index) => (
+                        <CartItem key={index} specs={item} />
+                    ))
+                    : <h3 className="head">Empty cart</h3>}
             </div>
         </Fragment>
     );
 }
-
-export default Cart;

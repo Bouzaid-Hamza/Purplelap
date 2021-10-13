@@ -6,7 +6,7 @@ const admin = require('../middlewares/admin');
 
 const router = express.Router();
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     const categories = await Category.find();
     res.send(categories);
 });

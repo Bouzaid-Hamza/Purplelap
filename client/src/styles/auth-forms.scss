@@ -1,42 +1,68 @@
+.auth-container {
+    height: 100vh;
+    background: url(../imgs/back1.jpeg) bottom / cover rgb(45, 3, 80);
+
+    .logo {
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        color: $third;
+        font-size: 2rem;
+    }
+}
+
 #auth-form {
     position: relative;
     top: 50vh;
     left: 50vw;
-    padding: 2rem;
     transform: translate(-50%, -50%);
     max-width: 50rem;
-}
 
-.auth-form {
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.27);
-    padding: 2rem;
-
-    & > div:not(:last-child) {
-        display: flex;
-        flex-direction: column;
-        margin: 1.5rem 0;
-    }
-
-    h2 {
+    h3 {
         text-align: center;
-        margin: 0;
+        color: rgba(75, 50, 93, 0.7);
     }
 
-    input {
-        padding: 1.5rem;
-        margin-top: 5px;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        transition: border 100ms ease-in;
+    > div {
+        box-shadow: 0 1px 1rem 0 rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        background-color: rgba(247, 247, 255, 0.7);
     }
 
-    button {
-        background-color: $color3;
-        margin-top: 1rem;
-        padding: 1.5rem;
-        width: 100%;
+    form {
+        > div:not(:last-child) {
+            display: flex;
+            flex-direction: column;
+            margin: 1.5rem 0;
+        }
 
-        &:hover {
-            background-color: $third !important;
+        h2 {
+            text-align: center;
+            margin: 0;
+        }
+
+        label {
+            color: rgba(75, 50, 93, 0.7);
+            font-weight: 600;
+        }
+
+        input {
+            padding: 1.7rem;
+            margin-top: 5px;
+            border: 1px solid rgba(194, 194, 194, 0.47);
+            background-color: transparent;
+            transition: border 100ms ease-in;
+        }
+
+        button {
+            background-color: #6668d1;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            width: 100%;
+
+            &:hover {
+                background-color: $third !important;
+            }
         }
     }
 }

@@ -1,21 +1,27 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
-const { User } = require('../models/user');
+const passportAuth = require('../middlewares/passportAuth');
+const path = require('path');
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send({ message: 'Invalid email or password.' });
+router.post('/', passportAuth);
 
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
-    if (!validPassword) return res.status(400).send({ message: 'Invalid email or password.' });
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/mail.html'));
+});
 
-    const confirmed = user.confirmed;
-    if (!confirmed) return res.status(401).send({ message: 'This account is not confirmed.' });
+router.get('/user', (req, res) => {
+    console.log('/login/user: ', req.user);
+    if (req.user) {
+        const { password, ...user } = req.user._doc;
+        return res.send(user);
+    }
 
-    const token = user.generateAuthToken();
+    res.status(401).send({ message: 'You need to login first!!' });
+});
 
-    res.send({ message: token });
+router.get('/out', (req, res) => {
+    req.logout();
+    res.send({ message: 'logout successful' });
 });
 
 module.exports = router;

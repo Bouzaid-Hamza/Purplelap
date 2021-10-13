@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import NavLink from './NavLink';
 
-function DropDown (props) {
-    const [fix, setFix] = useState('');
+function DropDown ({ children }) {
+    const dropdownRef = useRef();
 
     const handleResize = () => {
-        if (window.innerWidth > 720) setFix('stop-transition');
+        if (dropdownRef.current) {
+            dropdownRef.current.classList.add('stop-transition');
+            setTimeout(() => {
+                dropdownRef.current.classList.remove('stop-transition');
+            }, 20);
+        }
     }
 
     useEffect(() => {
         let mounted = true;
-        window.addEventListener('resize', handleResize);
+        if (mounted) {
+            window.addEventListener('resize', handleResize);
+        }
         return () => {
             mounted = false;
             window.removeEventListener('scroll', handleResize);
@@ -19,23 +25,14 @@ function DropDown (props) {
     }, []);
 
     return (
-        <li className='drop-menu'
-            onMouseOver={() => setFix('')}>
-            <a href={props.url}>{props.name}</a>
-            <ul className={`drop-list ${fix}`}>
-                {props.links.map((link, index) => <NavLink key={index} {...link} />)}
-            </ul>
-        </li>
+        <ul className='drop-list' ref={dropdownRef}>
+            {children}
+        </ul>
     );
 }
 
 DropDown.propTypes = {
-    name: PropTypes.string,
-    url: PropTypes.string,
-    links: PropTypes.arrayOf(PropTypes.shape({
-        url: PropTypes.string,
-        name: PropTypes.string
-    }))
+    children: PropTypes.any
 }
 
 export default DropDown;

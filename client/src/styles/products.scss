@@ -9,6 +9,11 @@
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 0 10px rgb(221, 221, 221);
+
+    i {
+        font-size: 1.6rem;
+        animation: infiniteRotation 1s infinite linear;
+    }
 }
 
 .product-img {

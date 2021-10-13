@@ -1,6 +1,7 @@
 .cart-title {
-    margin: 4rem 2rem;
+    margin: 10rem 0 4rem 2rem;
     color: adjust-color($color2, $lightness: 20%);
+    text-align: center;
 }
 
 .cart {
@@ -13,6 +14,11 @@
     background-color: #6668d1;
     padding: 2rem;
     color: white;
+}
+
+h3.head {
+    background-color: white;
+    color: $color1;
 }
 
 .cart-details {
@@ -40,7 +46,8 @@
 
     .img {
         margin-right: 1rem;
-        width: 40%;
+        width: 20%;
+        min-width: 11rem;
     }
 
     .specs {

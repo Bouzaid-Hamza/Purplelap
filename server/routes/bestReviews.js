@@ -7,7 +7,7 @@ const { User } = require('../models/user');
 
 const router = express.Router();
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     const bestReviews = await BestReview.find().populate({ path: 'userId', select: ['name', 'img'] });
     res.send(bestReviews);
 });
