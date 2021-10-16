@@ -3,7 +3,6 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const cors = require('../middlewares/cors');
-
 const error = require('../middlewares/error');
 const login = require('../routes/login');
 const signup = require('../routes/signup');
@@ -23,13 +22,13 @@ module.exports = (app) => {
     app.use(cors);
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(cookieSession({
         secret: process.env.SESSION_SECRET,
         name: 'session',
-        maxAge: 60 * 60 * 1000,
+        maxAge: 4800 * 60 * 60 * 1000,
         keys: ['key1', 'key2']
     }));
-    app.use(cookieParser(process.env.SESSION_SECRET));
     app.use(passport.initialize());
     app.use(passport.session());
     initPassport(passport);

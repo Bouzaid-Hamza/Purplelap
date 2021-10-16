@@ -53,7 +53,19 @@ router.put('/', async (req, res) => {
     user.cart[laptopIndex].count = count;
     user.save();
 
-    res.send({ message: 'Cart has been updated successfully' });
+    res.send({
+        message: 'Cart has been updated successfully',
+        count
+    });
+});
+
+router.delete('/:laptopId', async (req, res) => {
+    const user = await User.findById(req.user._id);
+    const itemIndex = user.cart.findIndex(item => item.laptopId.toString() === req.params.laptopId);
+    user.cart.splice(itemIndex, 1);
+    await user.save();
+
+    res.send({ message: 'Laptop has been removed successfully from the cart.' });
 });
 
 module.exports = router;

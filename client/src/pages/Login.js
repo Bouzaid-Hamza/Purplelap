@@ -36,8 +36,7 @@ export default function Login () {
             return setDisabled(false);
         }
 
-        const user = await fetch(`${process.env.REACT_APP_API_URL}/login/user`, {
-            method: 'GET',
+        const user = await fetch('/api/login/user', {
             credentials: 'include'
         });
 

@@ -1,12 +1,17 @@
-.cart-title {
+.shop-title {
     margin: 10rem 0 4rem 2rem;
     color: adjust-color($color2, $lightness: 20%);
     text-align: center;
 }
 
-.cart {
+.shop {
+    display: flex;
     margin: 2rem;
+}
+
+.cart {
     box-shadow: -2px -2px 10px 0 rgba(0, 0, 0, 0.15);
+    width: calc(100% - 41rem);
 }
 
 .head {
@@ -36,6 +41,10 @@ h3.head {
     padding: 2rem;
     align-items: center;
 
+    &:not(:last-child) {
+        border-bottom: 1px solid #ececec;
+    }
+
     .cart-details {
         display: flex;
 
@@ -48,6 +57,17 @@ h3.head {
         margin-right: 1rem;
         width: 20%;
         min-width: 11rem;
+        display: flex;
+        flex-direction: column;
+
+        button {
+            background-color: #fd5050;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 0.5rem;
+            align-self: center;
+            margin-top: 1rem;
+        }
     }
 
     .specs {
@@ -76,4 +96,69 @@ h3.head {
         font-weight: bold;
     }
 
+}
+
+.order-summary {
+    width: 40rem;
+    height: 50rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    left: calc(100% - 42rem);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+
+    h4 {
+        white-space: nowrap;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    .items {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .shipping {
+        width: 100%;
+
+        h5 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    select, input {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #e1e1e1;
+    }
+
+    .promo-code {
+        border-bottom: 1px solid #dcdcdc;
+        padding-bottom: 2rem;
+
+        h5 {
+            margin-bottom: 1rem;
+        }
+
+        input {
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            font-size: 1.3rem;
+            padding: 0.8em 1.4em;
+            background-color: #9b9b9b;
+        }
+    }
+
+    .total-cost {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    > button {
+        background-color: #6668d1;
+    }
 }

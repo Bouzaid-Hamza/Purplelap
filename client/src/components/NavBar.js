@@ -41,7 +41,7 @@ function NavBar ({ cart, noFix }) {
                 <ul className="nav-links">
                     <NavLink url='/#home' name='HOME' icon={<i className="fas fa-home"/>} />
                     <NavLink url='/#about' name='ABOUT' icon={<i className="fas fa-question"/>} />
-                    <NavLink className='drop-menu' url='/#category' name='CATEGORY'>
+                    <NavLink classes='drop-menu' url='/#category' name='CATEGORY'>
                         <DropDown>
                             <NavLink url='/#ultraPortable' name='Ultra Portable' icon={<i className="fas fa-tablet"/>} />
                             <NavLink url='/#business' name='Business' icon={<i className="fas fa-briefcase"/>} />
