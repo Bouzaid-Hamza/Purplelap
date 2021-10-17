@@ -11,10 +11,10 @@ require('./startup/database')();
 require('./startup/validation')();
 require('./startup/routes')(app);
 
-if (process.env.NODE_ENV === 'production') {
-    require('./startup/production')(app);
-}
-// require('./startup/production')(app);
+// if (process.env.NODE_ENV === 'production') {
+//     require('./startup/production')(app);
+// }
+require('./startup/production')(app);
 
 const server = app.listen(port, () => {
     logger.info(`listening on port ${port}...`);
