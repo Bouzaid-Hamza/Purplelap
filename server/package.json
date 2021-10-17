@@ -8,10 +8,6 @@
     "dev": "cls && supervisor index.js",
     "test": "cls && jest --verbose --maxWorkers=1"
   },
-  "engines": {
-    "node": "14.17.5",
-    "npm": "6.14.14"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
