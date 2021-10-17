@@ -1,0 +1,22 @@
+{
+  "name": "purplelap",
+  "version": "1.0.0",
+  "description": "E-commerce laptop website",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bouzaid-Hamza/Purplelap.git"
+  },
+  "author": "Hamza Bouzaid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bouzaid-Hamza/Purplelap/issues"
+  },
+  "homepage": "https://github.com/Bouzaid-Hamza/Purplelap#readme"
+}
