@@ -10,7 +10,8 @@ module.exports = (app) => {
 
     app.use(express.static(filePath));
 
-    // app.get('/', (req, res) => {
-    //     res.sendFile(filePath);
-    // });
+    app.get('/hoome', (req, res) => {
+        // res.sendFile(filePath);
+        res.send({ home: 'home' });
+    });
 }
